@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA Remote Verified — Calm, Vetted, Scam-Free Remote Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-cream: #f7f4ec;
+      --bg-ricotta: #efe9dc;
+      --bg-forest: #163022;
+      --bg-forest-card: #1d3c2b;
+      --ink-forest: #163022;
+      --ink-body: #2c3e34;
+      --ink-muted: #5c6e63;
+      --ink-light: #f4f1ea;
+      --ink-light-muted: #c8d3cc;
+      --accent-sage: #2e5a44;
+      --badge-sage-bg: #2b4737;
+      --badge-sage-ink: #c5d8c7;
+      --btn-sage-light: #e4ede6;
+      --btn-sage-light-hover: #f7f4ec;
+      --border-soft: rgba(22, 48, 34, 0.14);
+      --border-light: rgba(244, 241, 234, 0.2);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --shadow-soft: 0 12px 32px rgba(22, 48, 34, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--ink-forest);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(247, 244, 236, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .nav-wrap {
+      max-width: 1120px; margin: 0 auto; padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: var(--bg-forest); color: var(--ink-light);
+      display: grid; place-items: center; font-weight: 700; font-size: 15px; flex-shrink: 0;
+    }
+    .brand-name { font-weight: 700; font-size: 16px; color: var(--ink-forest); line-height: 1.2; }
+    .brand-tag {
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent-sage); font-weight: 600; margin-top: 2px;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 20px; border-radius: 999px; font-weight: 700; font-size: 14px;
+      border: 1.5px solid transparent; cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-forest {
+      background: var(--bg-forest);
+      color: var(--ink-light);
+      border-color: var(--bg-forest);
+    }
+    .btn-forest:hover {
+      background: var(--accent-sage);
+      border-color: var(--accent-sage);
+    }
+
+    .btn-cream {
+      background: var(--bg-cream);
+      color: var(--ink-forest);
+      border-color: var(--bg-forest);
+    }
+    .btn-cream:hover {
+      background: #ffffff;
+    }
+
+    .btn-sage-light {
+      background: var(--btn-sage-light);
+      color: var(--bg-forest);
+      border-color: var(--btn-sage-light);
+    }
+    .btn-sage-light:hover {
+      background: var(--btn-sage-light-hover);
+      border-color: var(--btn-sage-light-hover);
+    }
+
+    .btn-full { width: 100%; }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 60px 0; }
+    .hero { padding: 24px 0 44px; }
+
+    .opening-video-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background-color: var(--bg-ricotta);
+      padding: 36px 22px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    @media (min-width: 768px) {
+      .opening-video-banner { padding: 48px 36px; }
+    }
+
+    .opening-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 1.35s ease-in-out;
+      will-change: opacity;
+    }
+
+    .opening-bg-video.is-crossfading {
+      opacity: 0.08;
+    }
+
+    .opening-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(247, 244, 236, 0.58) 0%,
+        rgba(239, 233, 220, 0.65) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .opening-line {
+      position: relative;
+      z-index: 2;
+      font-family: "Caveat", cursive;
+      font-size: clamp(23px, 3.1vw, 29px);
+      line-height: 1.35;
+      font-weight: 600;
+      color: var(--ink-forest);
+      text-shadow: 0 1px 10px rgba(247, 244, 236, 0.92);
+      text-align: center;
+      max-width: 62ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .opening-line p + p {
+      margin-top: 10px;
+    }
+    .opening-line strong {
+      font-weight: 700;
+      color: var(--ink-forest);
+    }
+
+    .sound-toggle-wrap {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+    }
+    .sound-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(22, 48, 34, 0.22);
+      background: rgba(247, 244, 236, 0.88);
+      color: var(--ink-forest);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .sound-toggle-btn:hover {
+      background: #ffffff;
+    }
+
+    .hero-card {
+      background: var(--bg-ricotta); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 36px 28px; box-shadow: var(--shadow-soft);
+    }
+    @media (min-width: 768px) { .hero-card { padding: 48px; } }
+
+    .eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent-sage); background: rgba(46, 90, 68, 0.12);
+      padding: 6px 12px; border-radius: 999px; margin-bottom: 16px;
+    }
+    h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.15; color: var(--ink-forest); margin-bottom: 16px; max-width: 22ch; }
+    .hero-sub { font-size: 17px; color: var(--ink-body); max-width: 62ch; margin-bottom: 24px; }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .trust-strip {
+      display: flex; flex-wrap: wrap; gap: 14px 24px; padding-top: 18px;
+      border-top: 1px solid var(--border-soft); font-size: 13px; color: var(--ink-muted); font-weight: 500;
+    }
+    .section-head { max-width: 64ch; margin-bottom: 32px; }
+    h2 { font-size: clamp(24px, 3.6vw, 34px); line-height: 1.2; color: var(--ink-forest); margin-bottom: 10px; }
+    .section-desc { color: var(--ink-body); font-size: 16px; }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--bg-ricotta);
+      color: var(--ink-forest);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card.theme-forest {
+      background: var(--bg-forest);
+      color: var(--ink-light);
+      border-color: var(--bg-forest);
+    }
+
+    .tier-badge {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 5px 11px; border-radius: 999px;
+      background: rgba(22, 48, 34, 0.1); color: var(--accent-sage);
+      margin-bottom: 12px; align-self: flex-start;
+    }
+    .card.theme-forest .tier-badge {
+      background: var(--badge-sage-bg);
+      color: var(--badge-sage-ink);
+    }
+
+    .card-title { font-size: 21px; font-weight: 700; margin-bottom: 6px; }
+    .price { font-size: 30px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .price span { font-size: 14px; font-weight: 500; opacity: 0.85; }
+    .card-copy { font-size: 14px; color: var(--ink-body); margin-bottom: 16px; }
+    .card.theme-forest .card-copy { color: var(--ink-light-muted); }
+
+    .feature-list { list-style: none; margin-bottom: 22px; display: grid; gap: 9px; font-size: 14px; }
+    .feature-list li::before { content: "✓ "; font-weight: 700; color: var(--accent-sage); margin-right: 4px; }
+    .card.theme-forest .feature-list li::before { color: var(--badge-sage-ink); }
+
+    .payfast-form { margin-top: auto; padding-top: 6px; }
+
+    .screener-box {
+      background: var(--bg-ricotta); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-soft);
+    }
+    .check-grid { display: grid; gap: 12px; margin: 20px 0; }
+    .check-item {
+      display: flex; align-items: flex-start; gap: 12px; background: var(--bg-cream);
+      border: 1px solid var(--border-soft); border-radius: var(--radius-sm);
+      padding: 14px 16px; cursor: pointer; font-size: 14px; color: var(--ink-body);
+    }
+    .check-item input { margin-top: 3px; width: 17px; height: 17px; accent-color: var(--bg-forest); flex-shrink: 0; }
+    .screener-result {
+      margin-top: 18px; padding: 20px; border-radius: var(--radius-md);
+      background: var(--bg-forest); color: var(--ink-light);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+    }
+    .screener-result p { font-size: 14px; color: var(--ink-light-muted); max-width: 56ch; }
+
+    .steps-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .step-card {
+      background: var(--bg-ricotta); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md); padding: 22px;
+    }
+    .step-card.theme-forest {
+      background: var(--bg-forest);
+      color: var(--ink-light);
+      border-color: var(--bg-forest);
+    }
+    .step-card.theme-forest .card-copy { color: var(--ink-light-muted); }
+    .step-num {
+      font-size: 12px; font-weight: 700; color: var(--accent-sage);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
+    }
+    .step-card.theme-forest .step-num { color: var(--badge-sage-ink); }
+
+    footer { background: var(--bg-forest); color: var(--ink-light); padding: 52px 0 36px; margin-top: 32px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin-bottom: 32px; }
+    .footer-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .footer-copy { font-size: 14px; color: var(--ink-light-muted); margin-bottom: 12px; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--ink-light); }
+    .footer-links a { text-decoration: underline; text-underline-offset: 3px; }
+    .notice-box {
+      background: var(--bg-forest-card); border: 1px solid var(--border-light);
+      border-radius: var(--radius-md); padding: 22px; font-size: 13px; color: var(--ink-light-muted); margin-bottom: 24px;
+    }
+    .notice-box strong { color: var(--ink-light); display: block; margin-bottom: 6px; font-size: 14px; }
+    .footer-bottom {
+      border-top: 1px solid var(--border-light); padding-top: 20px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+      font-size: 12px; color: var(--ink-light-muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-mark">SARV</div>
+        <div>
+          <div class="brand-name">SA Remote Verified</div>
+          <div class="brand-tag">Calm &bull; Vetted &bull; Scam-Free</div>
+        </div>
+      </a>
+      <nav class="nav-actions" aria-label="Primary">
+        <a href="#screener" class="btn btn-cream">7-Point Scam Screener</a>
+        <a href="#offers" class="btn btn-forest">View Plans &amp; Services</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="opening-video-banner">
+          <video id="sarflowerBgVideo" class="opening-bg-video" autoplay muted playsinline preload="auto" aria-hidden="true">
+            <source src="flowersarv.mp4" type="video/mp4" />
+          </video>
+          <audio id="pianoBgAudio" preload="auto" aria-hidden="true">
+            <source src="Piano%20piece.mp3" type="audio/mpeg" />
+          </audio>
+          <input type="file" id="localPianoPicker" accept="audio/*" style="display:none;" aria-hidden="true" />
+          <input type="file" id="localVideoPicker" accept="video/*" style="display:none;" aria-hidden="true" />
+          <div class="opening-video-overlay"></div>
+
+          <div class="opening-line">
+            <p><strong>Gatvol of scrolling through hundreds of ads and empty promises of online work while life is lifing on you?</strong></p>
+            <p>The noise is exhausting—and completely unnecessary.</p>
+            <p>We’re here to give you a break from all that nonsense. Skip the traps, connect with real, legitimate remote opportunities, and get back to smiling easy—even when life is doing the most.</p>
+            <p>Tap an option below to see what's available today.</p>
+
+            <div class="sound-toggle-wrap">
+              <button type="button" id="soundToggleBtn" class="sound-toggle-btn" aria-pressed="false" title="Toggle sound">
+                <span id="soundIcon">&#128263;</span>
+                <span id="soundLabel">Piano off</span>
+              </button>
+              <button type="button" id="pickPianoBtn" class="sound-toggle-btn" style="display:none;" title="Select your piano audio file">
+                &#127929; Pick piano MP3
+              </button>
+              <button type="button" id="pickVideoBtn" class="sound-toggle-btn" style="display:none;" title="Select your video file">
+                &#127909; Pick video MP4
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <span class="eyebrow">South African Remote Work &amp; Scam Protection</span>
+          <h1>Find legitimate remote roles without chasing ghost listings or paying scam fees.</h1>
+          <p class="hero-sub">
+            SA Remote Verified curates South Africa-friendly remote opportunities, checks red flags early, and helps remote jobseekers sharpen their CVs and readiness—delivered clearly via WhatsApp.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#offers" class="btn btn-forest">Explore Free &amp; Paid Options</a>
+          </div>
+          <div class="trust-strip">
+            <span>Direct WhatsApp Business: +27 83 893 0513</span>
+            <span>Secure ZAR checkout via PayFast</span>
+            <span>POPIA-conscious &amp; transparent terms</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="offers">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Offer Stack</span>
+          <h2>Start free or choose targeted remote career support</h2>
+          <p class="section-desc">
+            Every paid option connects directly to PayFast with a clear item label. After completing payment, message <strong>+27 83 893 0513</strong> on WhatsApp with your payment reference or proof so we can verify status and start onboarding.
+          </p>
+        </div>
+
+        <div class="offers-grid">
+          <article class="card">
+            <div>
+              <span class="tier-badge">Free Entry</span>
+              <h3 class="card-title">Public Free Tier</h3>
+              <div class="price">R0 <span>/ free</span></div>
+              <p class="card-copy">
+                Ideal for testing the waters with basic safety awareness and WhatsApp updates before committing to a paid tier.
+              </p>
+              <ul class="feature-list">
+                <li>Access to the on-page 7-Point Scam Screener</li>
+                <li>Clear guidance on common remote job red flags</li>
+                <li>Direct WhatsApp Business inquiry line (+27 83 893 0513)</li>
+              </ul>
+            </div>
+            <div class="payfast-form">
+              <a href="https://wa.me/27838930513?text=Hi%20SA%20Remote%20Verified%2C%20please%20add%20me%20to%20the%20Free%20Tier%20(R0)." target="_blank" rel="noopener noreferrer" class="btn btn-forest btn-full">
+                Join Free Tier on WhatsApp
+              </a>
+            </div>
+          </article>
+
+          <article class="card theme-forest">
+            <div>
+              <span class="tier-badge">Monthly Membership</span>
+              <h3 class="card-title">Light Package</h3>
+              <div class="price">R50 <span>/ month</span></div>
+              <p class="card-copy">
+                Ongoing monthly support for South Africans actively screening remote opportunities and building steady momentum.
+              </p>
+              <ul class="feature-list">
+                <li>Curated remote opportunity check-ins</li>
+                <li>Ongoing scam-awareness &amp; application tips</li>
+                <li>WhatsApp onboarding &amp; member support</li>
+              </ul>
+            </div>
+            <form class="payfast-form" name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
+              <input required type="hidden" name="cmd" value="_paynow">
+              <input required type="hidden" name="receiver" pattern="[0-9]" value="21810156">
+              <input required type="hidden" name="amount" value="50">
+              <input required type="hidden" name="item_name" maxlength="255" value="SARV Light Package R50 pm">
+              <button type="submit" class="btn btn-sage-light btn-full">Pay R50/mo via PayFast</button>
+            </form>
+          </article>
+
+          <article class="card">
+            <div>
+              <span class="tier-badge">Priority Monthly</span>
+              <h3 class="card-title">VIP Vetted Club</h3>
+              <div class="price">R110 <span>/ month</span></div>
+              <p class="card-copy">
+                For serious remote jobseekers who want closer vetting focus, sharper positioning, and priority WhatsApp access.
+              </p>
+              <ul class="feature-list">
+                <li>Priority vetted remote role highlights</li>
+                <li>Deeper screening guidance before you apply</li>
+                <li>Direct WhatsApp member channel (+27 83 893 0513)</li>
+              </ul>
+            </div>
+            <form class="payfast-form" name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
+              <input required type="hidden" name="cmd" value="_paynow">
+              <input required type="hidden" name="receiver" pattern="[0-9]" value="21810156">
+              <input required type="hidden" name="amount" value="110">
+              <input required type="hidden" name="item_name" maxlength="255" value="SARV VIP Vetted Club R110 pm">
+              <button type="submit" class="btn btn-forest btn-full">Pay R110/mo via PayFast</button>
+            </form>
+          </article>
+
+          <article class="card theme-forest">
+            <div>
+              <span class="tier-badge">Once-Off Check</span>
+              <h3 class="card-title">7-Point Scam Audit</h3>
+              <div class="price">R50 <span>once-off</span></div>
+              <p class="card-copy">
+                Got a suspicious job offer, recruiter message, or remote task? Send the details for a focused 7-point review.
+              </p>
+              <ul class="feature-list">
+                <li>Structured 7-point red-flag assessment</li>
+                <li>Clear breakdown of risk signals to watch</li>
+                <li>Delivered via WhatsApp after payment verification</li>
+              </ul>
+            </div>
+            <form class="payfast-form" name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
+              <input required type="hidden" name="cmd" value="_paynow">
+              <input required type="hidden" name="receiver" pattern="[0-9]" value="21810156">
+              <input required type="hidden" name="amount" value="50">
+              <input required type="hidden" name="item_name" maxlength="255" value="SARV 7-Point Scam Audit R50">
+              <button type="submit" class="btn btn-sage-light btn-full">Pay R50 via PayFast</button>
+            </form>
+          </article>
+
+          <article class="card">
+            <div>
+              <span class="tier-badge">Once-Off Service</span>
+              <h3 class="card-title">Remote-Ready CV Rewrite</h3>
+              <div class="price">R200 <span>once-off</span></div>
+              <p class="card-copy">
+                Position your existing experience clearly for remote and distributed roles with clean structure and remote readiness.
+              </p>
+              <ul class="feature-list">
+                <li>Remote-focused CV restructuring &amp; rewriting</li>
+                <li>Highlights async communication &amp; self-management</li>
+                <li>Turnaround &amp; review coordinated on WhatsApp</li>
+              </ul>
+            </div>
+            <form class="payfast-form" name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
+              <input required type="hidden" name="cmd" value="_paynow">
+              <input required type="hidden" name="receiver" pattern="[0-9]" value="21810156">
+              <input required type="hidden" name="amount" value="200">
+              <input required type="hidden" name="item_name" maxlength="255" value="SARV Remote-Ready CV Rewrite R200">
+              <button type="submit" class="btn btn-forest btn-full">Pay R200 via PayFast</button>
+            </form>
+          </article>
+
+          <article class="card theme-forest">
+            <div>
+              <span class="tier-badge">Once-Off Assessment</span>
+              <h3 class="card-title">Remote-Ready Badge Test</h3>
+              <div class="price">R350 <span>once-off</span></div>
+              <p class="card-copy">
+                Practical remote-readiness evaluation covering digital workflow habits, reliability, and scam awareness.
+              </p>
+              <ul class="feature-list">
+                <li>Structured remote-readiness assessment</li>
+                <li>Practical feedback on strengths &amp; gaps</li>
+                <li>Badge issued upon meeting readiness criteria</li>
+              </ul>
+            </div>
+            <form class="payfast-form" name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
+              <input required type="hidden" name="cmd" value="_paynow">
+              <input required type="hidden" name="receiver" pattern="[0-9]" value="21810156">
+              <input required type="hidden" name="amount" value="350">
+              <input required type="hidden" name="item_name" maxlength="255" value="SARV Remote-Ready Badge Test R350">
+              <button type="submit" class="btn btn-sage-light btn-full">Pay R350 via PayFast</button>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="screener">
+      <div class="container">
+        <div class="screener-box">
+          <span class="eyebrow">Quick Self-Check</span>
+          <h2>7-Point Remote Job Scam Screener</h2>
+          <p class="section-desc">
+            Tick any warning signs you see in a job invite, interview request, or task offer:
+          </p>
+
+          <div class="check-grid" id="screenerChecks">
+            <label class="check-item">
+              <input type="checkbox" value="1" />
+              <span>They ask you to pay upfront for training, onboarding kits, software, background checks, or "refundable" equipment deposits.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="1" />
+              <span>The pay sounds unusually high for minimal hours or entry-level data/clicking/review tasks with no real interview.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="1" />
+              <span>They push you immediately off official channels onto unverified chat apps or ask for ID/banking details before any formal offer.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="1" />
+              <span>The recruiter uses a mismatched free email address or a lookalike company domain with spelling discrepancies.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="1" />
+              <span>They create artificial urgency ("spot closes in 30 minutes") to stop you from researching the company.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="1" />
+              <span>They ask you to receive or forward funds ("payment processing" / "client deposit") through your personal bank account.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="1" />
+              <span>The job description is vague, contradictory, or has no verifiable company footprint or role details.</span>
+            </label>
+          </div>
+
+          <div class="screener-result" id="screenerResult">
+            <div>
+              <strong id="screenerHeadline" style="display:block; font-size:16px; margin-bottom:4px;">0 of 7 red flags selected</strong>
+              <p id="screenerText">Select any warning signs above to get an immediate risk check, or request a 7-Point Scam Audit on WhatsApp (+27 83 893 0513).</p>
+            </div>
+            <a href="https://wa.me/27838930513?text=Hi%20SA%20Remote%20Verified%2C%20I%27d%20like%20help%20checking%20a%20remote%20job%20offer." target="_blank" rel="noopener noreferrer" class="btn btn-sage-light">
+              Message +27 83 893 0513
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Simple Delivery</span>
+          <h2>How checkout and onboarding work</h2>
+          <p class="section-desc">
+            Clear, direct steps with zero guesswork after payment.
+          </p>
+        </div>
+
+        <div class="steps-strip">
+          <div class="step-card">
+            <div class="step-num">Step 1</div>
+            <h3 class="card-title">Choose Your Tier</h3>
+            <p class="card-copy">Select the Free Tier on WhatsApp or click the PayFast button for your chosen package or service.</p>
+          </div>
+          <div class="step-card theme-forest">
+            <div class="step-num">Step 2</div>
+            <h3 class="card-title">Complete PayFast Payment</h3>
+            <p class="card-copy">Pay securely in ZAR via PayFast with the exact tier label shown on your checkout screen.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Step 3</div>
+            <h3 class="card-title">Message on WhatsApp</h3>
+            <p class="card-copy">Send a quick message to <strong>+27 83 893 0513</strong> with your payment details so we can confirm <code>COMPLETE</code> status and start onboarding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">SA Remote Verified</div>
+          <p class="footer-copy">
+            An independent South African remote work curation, scam-protection, and career-readiness platform built with calm integrity. Payments processed securely via PayFast.
+          </p>
+          <p class="footer-copy">
+            WhatsApp Business: <strong>+27 83 893 0513</strong>
+          </p>
+        </div>
+        <div>
+          <div class="footer-title">Quick Links &amp; Contact</div>
+          <div class="footer-links">
+            <a href="#offers">Plans &amp; Services</a>
+            <a href="#screener">7-Point Scam Screener</a>
+            <a href="https://wa.me/27838930513" target="_blank" rel="noopener noreferrer">Chat on WhatsApp Business (+27 83 893 0513)</a>
+            <a href="#statutory-notice">Terms, POPIA &amp; Statutory Notice</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice-box" id="statutory-notice">
+        <strong>Statutory &amp; Regulatory Notice (South Africa) &amp; POPIA Privacy Note:</strong>
+        SA Remote Verified operates strictly as an independent career-readiness, digital skills assessment, and research curation platform. We are <strong>not</strong> a licensed private employment agency or labour broker under the <em>Employment Services Act (Act No. 4 of 2014)</em>. We never charge work seekers placement fees, do not negotiate employment contracts, and do not guarantee employment outcomes. All fees apply solely to digital research subscriptions, due-diligence scam audits, CV editing, and educational skills assessments. Any contact details or materials you voluntarily share via WhatsApp for requested services are handled responsibly in line with POPIA principles.
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 SA Remote Verified. All rights reserved.</span>
+        <span>POPIA Conscious &bull; Secured by PayFast</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const video = document.getElementById('sarflowerBgVideo');
+      const piano = document.getElementById('pianoBgAudio');
+      const soundBtn = document.getElementById('soundToggleBtn');
+      const soundIcon = document.getElementById('soundIcon');
+      const soundLabel = document.getElementById('soundLabel');
+      const pickPianoBtn = document.getElementById('pickPianoBtn');
+      const pickVideoBtn = document.getElementById('pickVideoBtn');
+      const localPianoPicker = document.getElementById('localPianoPicker');
+      const localVideoPicker = document.getElementById('localVideoPicker');
+
+      const TARGET_PIANO_VOLUME = 0.65;
+      const VIDEO_FADE_MS = 1350;
+      const VIDEO_FADE_LEAD_SEC = 1.45;
+      const AUDIO_CROSSFADE_SEC = 2.0;
+      const FADE_STEPS = 24;
+
+      let soundEnabled = false;
+      let isVideoTransitioning = false;
+      let isAudioCrossfading = false;
+      let videoFadeInTimer = null;
+      let pianoFadeInterval = null;
+      let customPianoUrl = null;
+      let customVideoUrl = null;
+
+      function clearPianoFade() {
+        if (pianoFadeInterval) {
+          clearInterval(pianoFadeInterval);
+          pianoFadeInterval = null;
+        }
+      }
+
+      function fadePianoTo(targetVol, durationMs, onDone) {
+        if (!piano) {
+          if (onDone) onDone();
+          return;
+        }
+        clearPianoFade();
+        const startVol = Math.max(0, Math.min(1, piano.volume));
+        const delta = targetVol - startVol;
+        const stepTime = Math.max(20, Math.floor(durationMs / FADE_STEPS));
+        let step = 0;
+
+        pianoFadeInterval = setInterval(() => {
+          step++;
+          const progress = Math.min(1, step / FADE_STEPS);
+          const eased = progress < 0.5
+            ? 2 * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+          piano.volume = Math.max(0, Math.min(1, startVol + delta * eased));
+
+          if (progress >= 1) {
+            clearPianoFade();
+            if (onDone) onDone();
+          }
+        }, stepTime);
+      }
+
+      function updateSoundButton() {
+        if (!soundBtn) return;
+        soundBtn.setAttribute('aria-pressed', String(soundEnabled));
+        if (soundEnabled) {
+          soundIcon.innerHTML = '&#128266;';
+          soundLabel.textContent = 'Piano on';
+        } else {
+          soundIcon.innerHTML = '&#128263;';
+          soundLabel.textContent = 'Piano off';
+        }
+      }
+
+      function smoothVideoLoopCycle() {
+        if (!video || isVideoTransitioning) return;
+        isVideoTransitioning = true;
+        video.classList.add('is-crossfading');
+
+        if (videoFadeInTimer) clearTimeout(videoFadeInTimer);
+        videoFadeInTimer = setTimeout(() => {
+          try {
+            video.currentTime = 0.05;
+          } catch (e) {}
+
+          const playPromise = video.play();
+          const finishFadeIn = () => {
+            video.classList.remove('is-crossfading');
+            setTimeout(() => {
+              isVideoTransitioning = false;
+            }, VIDEO_FADE_MS);
+          };
+
+          if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.then(finishFadeIn).catch(finishFadeIn);
+          } else {
+            finishFadeIn();
+          }
+        }, VIDEO_FADE_MS);
+      }
+
+      function smoothPianoLoopCycle() {
+        if (!piano || !soundEnabled || isAudioCrossfading) return;
+        isAudioCrossfading = true;
+
+        fadePianoTo(0, 1200, () => {
+          try {
+            piano.currentTime = 0;
+          } catch (e) {}
+
+          const p = piano.play();
+          const afterRestart = () => {
+            piano.volume = 0.01;
+            fadePianoTo(TARGET_PIANO_VOLUME, 1400, () => {
+              isAudioCrossfading = false;
+            });
+          };
+
+          if (p && typeof p.then === 'function') {
+            p.then(afterRestart).catch(() => {
+              isAudioCrossfading = false;
+            });
+          } else {
+            afterRestart();
+          }
+        });
+      }
+
+      if (video) {
+        video.loop = false;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+
+        const tryPlayVideo = () => {
+          const promise = video.play();
+          if (promise && typeof promise.then === 'function') {
+            promise.catch(() => {});
+          }
+        };
+
+        video.addEventListener('error', function () {
+          if (pickVideoBtn && !customVideoUrl) {
+            pickVideoBtn.style.display = 'inline-flex';
+          }
+        });
+
+        video.addEventListener('timeupdate', function () {
+          if (!video.duration || isNaN(video.duration)) return;
+          const remaining = video.duration - video.currentTime;
+          if (remaining <= VIDEO_FADE_LEAD_SEC && !isVideoTransitioning) {
+            smoothVideoLoopCycle();
+          }
+        });
+
+        video.addEventListener('ended', function () {
+          if (!isVideoTransitioning) {
+            smoothVideoLoopCycle();
+          }
+        });
+
+        video.addEventListener('loadedmetadata', tryPlayVideo);
+        window.addEventListener('load', tryPlayVideo);
+        document.addEventListener('touchstart', tryPlayVideo, { once: true, passive: true });
+        tryPlayVideo();
+      }
+
+      if (piano) {
+        piano.loop = false;
+        piano.volume = 0;
+
+        piano.addEventListener('error', function () {
+          if (pickPianoBtn && !customPianoUrl) {
+            pickPianoBtn.style.display = 'inline-flex';
+          }
+        });
+
+        piano.addEventListener('timeupdate', function () {
+          if (!soundEnabled || !piano.duration || isNaN(piano.duration)) return;
+          const remaining = piano.duration - piano.currentTime;
+          if (remaining <= AUDIO_CROSSFADE_SEC && !isAudioCrossfading) {
+            smoothPianoLoopCycle();
+          }
+        });
+
+        piano.addEventListener('ended', function () {
+          if (soundEnabled && !isAudioCrossfading) {
+            smoothPianoLoopCycle();
+          }
+        });
+      }
+
+      if (pickPianoBtn && localPianoPicker) {
+        pickPianoBtn.addEventListener('click', function () {
+          localPianoPicker.click();
+        });
+        localPianoPicker.addEventListener('change', function () {
+          const file = localPianoPicker.files && localPianoPicker.files[0];
+          if (!file || !piano) return;
+          if (customPianoUrl) URL.revokeObjectURL(customPianoUrl);
+          customPianoUrl = URL.createObjectURL(file);
+          piano.src = customPianoUrl;
+          piano.load();
+          soundEnabled = true;
+          piano.muted = false;
+          piano.volume = 0.02;
+          const p = piano.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => {
+              fadePianoTo(TARGET_PIANO_VOLUME, 900);
+              updateSoundButton();
+            }).catch(() => {});
+          }
+        });
+      }
+
+      if (pickVideoBtn && localVideoPicker) {
+        pickVideoBtn.addEventListener('click', function () {
+          localVideoPicker.click();
+        });
+        localVideoPicker.addEventListener('change', function () {
+          const file = localVideoPicker.files && localVideoPicker.files[0];
+          if (!file || !video) return;
+          if (customVideoUrl) URL.revokeObjectURL(customVideoUrl);
+          customVideoUrl = URL.createObjectURL(file);
+          video.src = customVideoUrl;
+          video.load();
+          video.play().catch(() => {});
+        });
+      }
+
+      if (soundBtn && piano) {
+        soundBtn.addEventListener('click', function () {
+          if (!soundEnabled) {
+            soundEnabled = true;
+            piano.muted = false;
+            piano.volume = 0.02;
+            const playPromise = piano.play();
+            const startFade = () => {
+              fadePianoTo(TARGET_PIANO_VOLUME, 900);
+              updateSoundButton();
+            };
+            if (playPromise && typeof playPromise.then === 'function') {
+              playPromise.then(startFade).catch(() => {
+                soundEnabled = false;
+                updateSoundButton();
+                if (pickPianoBtn) pickPianoBtn.style.display = 'inline-flex';
+              });
+            } else {
+              startFade();
+            }
+          } else {
+            soundEnabled = false;
+            fadePianoTo(0, 400, () => {
+              piano.pause();
+              updateSoundButton();
+            });
+          }
+        });
+      }
+
+      const checkboxes = document.querySelectorAll('#screenerChecks input[type="checkbox"]');
+      const headline = document.getElementById('screenerHeadline');
+      const text = document.getElementById('screenerText');
+
+      function updateScreener() {
+        const count = Array.from(checkboxes).filter((cb) => cb.checked).length;
+        headline.textContent = count + ' of 7 red flags selected';
+
+        if (count === 0) {
+          text.textContent = 'Select any warning signs above to get an immediate risk check, or request a 7-Point Scam Audit on WhatsApp (+27 83 893 0513).';
+        } else if (count <= 2) {
+          text.textContent = 'Moderate caution advised: verify the company independently and never pay upfront fees or share sensitive personal/banking details prematurely.';
+        } else {
+          text.textContent = 'High-risk warning signs present: pause any payment or personal data sharing immediately and consider a 7-Point Scam Audit before proceeding.';
+        }
+      }
+
+      checkboxes.forEach((cb) => cb.addEventListener('change', updateScreener));
+    })();
+  </script>
+</body>
+</html>
